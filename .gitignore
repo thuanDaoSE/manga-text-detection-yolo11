@@ -1,0 +1,38 @@
+# Large data and dumps
+gradio_spaces_*
+/data/*
+!/data/raw/.gitkeep
+!/data/processed/.gitkeep
+*.zip
+*.tar.gz
+
+# Python cache and environments
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+*.venv
+venv/
+env/
+
+# Environment secrets and API keys
+.env
+.env.local
+
+# Ultralytics YOLO artifacts & model checkpoints
+runs/
+*.onnx
+yolo11n.pt
+training_results/last.pt
+
+# Allow best trained model at root
+!best.pt
+hf_manga_space/best.pt
+
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

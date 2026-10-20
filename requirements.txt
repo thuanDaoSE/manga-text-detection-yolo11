@@ -1,0 +1,21 @@
+# Core Deep Learning & Object Detection
+ultralytics>=8.3.0
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Computer Vision & Image Processing
+opencv-python>=4.8.0
+pillow>=10.0.0
+
+# Data Processing & Parsing
+lxml>=5.0.0
+pyyaml>=6.0
+tqdm>=4.66.0
+
+# Environment & Hub Integration
+python-dotenv>=1.0.0
+huggingface_hub>=0.20.0
+
+# Visualization & Notebook
+matplotlib>=3.7.0
+ipywidgets>=8.0.0

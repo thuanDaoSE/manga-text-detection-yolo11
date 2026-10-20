@@ -1,0 +1,30 @@
+# ============================================================
+# manga_text.yaml
+# Cấu hình dataset YOLO cho bài toán nhận diện vùng chữ (Text Detection)
+# trên tập dữ liệu Manga109.
+#
+# Cách dùng:
+#   - Trỏ tham số `data` trong lệnh .train() tới file này.
+#   - Đường dẫn `path` có thể là tương đối (so với repo root)
+#     hoặc tuyệt đối (khuyến nghị khi chạy trên cloud GPU / Jupyter).
+#
+# Chạy prepare_data.py trước để tạo cấu trúc thư mục dataset/.
+# ============================================================
+
+# Thư mục gốc chứa toàn bộ dữ liệu đã xử lý (output của prepare_data.py)
+# Đường dẫn tương đối: tính từ thư mục chứa file .yaml này (repo root)
+path: dataset
+
+# Đường dẫn con đến ảnh Train (tương đối so với `path` ở trên)
+train: images/train
+
+# Đường dẫn con đến ảnh Validation (tương đối so với `path` ở trên)
+val: images/val
+
+# Số lượng class (chỉ có 1 class: vùng chữ)
+nc: 1
+
+# Danh sách tên các class (thứ tự = class_id)
+# class_id 0 = 'text' (vùng chữ trong trang truyện tranh)
+names:
+  - text
