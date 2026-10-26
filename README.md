@@ -125,7 +125,46 @@ Sau đó truy cập vào `http://127.0.0.1:7860` trên trình duyệt.
 
 ---
 
-## 👨‍💻 Tác Giả & Bản Quyền
+## 🎓 6. Kiến Thức Lĩnh Hội & Bài Học Kinh Nghiệm (Key Takeaways & Lessons Learned)
 
-* **Tác giả:** Đào Đặng Thuận ([thuanDaoSE](https://github.com/thuanDaoSE))
-* **Mã nguồn:** Giấy phép mã nguồn mở Apache-2.0.
+Quá trình nghiên cứu, thiết kế và triển khai đề tài đã mang lại nhiều bài học thực tiễn giá trị:
+
+### 6.1. Kiến thức và kỹ năng then chốt đạt được
+* **Thị giác máy tính ứng dụng (Computer Vision):** Nắm vững quy trình khép kín của bài toán Object Detection chuyên biệt từ khâu phân tích bài toán, tiền xử lý dữ liệu phức tạp (Manga109-s với 123.212 annotations), kỹ thuật cân bằng khía cạnh ảnh (Letterbox), đến chiến lược tinh chỉnh mô hình (Fine-tuning transfer learning).
+* **Kiến trúc mạng nơ-ron tiên tiến:** Hiểu sâu cơ chế cải tiến giữa YOLOv8 và YOLO11 (kiến trúc khối C3k2, mô-đun chú ý không gian C2PSA, phân tách Detection Head không neo - Anchor-free), giải thích tường minh cơ chế giảm tới **25.6% FLOPs** mà vẫn duy trì mAP tiệm cận trần bão hòa (> 98.2%).
+* **Thực nghiệm đối chuẩn khoa học (Ablation & Benchmarking):** Rèn luyện phương pháp luận nghiên cứu nghiêm ngặt, đo đạc đa chiều từ độ chính xác ($mAP_{50}$, $mAP_{50-95}$, Precision, Recall) đến hiệu năng tính toán (Params, FLOPs, Latency, FPS, Memory footprint).
+* **Kỹ năng công nghệ phần mềm & Triển khai (MLOps/Cloud Deployment):** Đóng gói pipeline suy luận tối ưu, xử lý xung đột thư viện đám mây (Pydantic, Torch, Gradio), triển khai thành công ứng dụng tương tác thời gian thực trên Hugging Face Spaces (ZeroGPU/CPU).
+
+### 6.2. Bài học kinh nghiệm thực tế
+1. **Đặc thù miền dữ liệu truyện tranh:** Khác với ảnh tự nhiên (COCO), văn bản manga có tỷ lệ khung hình cực kỳ đa dạng (từ chữ dọc hẹp dài đến bóng thoại hình cầu hoặc tia sét). Việc thiết lập ngưỡng IoU = 0.45 và NMS phù hợp là chìa khóa then chốt để không tách rời các cụm chữ furigana khỏi từ gốc.
+2. **Quy luật đánh đổi trong bài toán kỹ thuật (Engineering Trade-off):** Khi độ chính xác đã tiệm cận mức bão hòa (trên 98%), mục tiêu tối ưu chuyển dịch sang tối thiểu hóa tài nguyên phần cứng. YOLO11n là lựa chọn lý tưởng cho các ứng dụng chạy cục bộ trên máy trạm hoặc thiết bị di động mà không cần chi phí duy trì server GPU đắt đỏ.
+3. **Quản lý tính tái lập (Reproducibility):** Khóa cứng phiên bản thư viện (`requirements.txt`), chuẩn hóa đường dẫn dữ liệu động và lưu trữ seed cố định giúp toàn bộ nhóm tái lập được 100% kết quả trên bất kỳ môi trường nào (Local, Kaggle, Hugging Face).
+
+---
+
+## 🚀 7. Hướng Phát Triển Của Đề Tài (Future Roadmap)
+
+* [x] **Giai đoạn 1 (Hiện tại):** Hoàn thành phát hiện và trích xuất tự động vùng thoại với YOLO11n ($mAP_{50} = 98.22\%$, 5.2 MB), triển khai Web Demo Gradio trên Hugging Face Spaces.
+* [ ] **Giai đoạn 2 (Nhận dạng chữ OCR):** Tích hợp module OCR mã nguồn mở chuyên dụng cho truyện tranh (Manga-OCR / EasyOCR / PaddleOCR) để nhận diện ký tự tiếng Nhật/tiếng Anh trực tiếp từ các bounding box đã trích xuất.
+* [ ] **Giai đoạn 3 (Biên tập & Dịch tự động):** Kết hợp các LLM / Translation API (như DeepL, Gemini, NLLB) cùng thuật toán xóa chữ (Inpainting) và điền bản dịch tiếng Việt vào ô thoại theo đúng phong cách truyện gốc.
+* [ ] **Giai đoạn 4 (Phần mềm hoàn chỉnh):** Đóng gói thành tiện ích mở rộng trình duyệt (Browser Extension) hoặc ứng dụng Desktop hỗ trợ độc giả đọc và dịch manga tự động theo thời gian thực.
+
+---
+
+## 👥 Nhóm Tác Giả & Hướng Dẫn (Team & Supervisor)
+
+* **Cơ quan:** Trường Công nghệ Thông tin & Truyền thông (SICT) — Trường Đại học Công nghiệp Hà Nội (HaUI).
+* **Học phần:** Đồ án chuyên ngành Công nghệ thông tin (Mã HP: `20261IT6122003` - Khóa 18).
+* **Giảng viên hướng dẫn:** ThS. Nguyễn Thái Cường.
+* **Nhóm sinh viên thực hiện (Nhóm 3):**
+  1. **Đào Đăng Thuận** (Trưởng nhóm - Xây dựng mô hình, Huấn luyện, Triển khai & Báo cáo)
+  2. **Nguyễn Ngọc Toàn** (Thu thập, Tiền xử lý dữ liệu Manga109-s & Phân tích yêu cầu)
+  3. **Phạm Hùng Minh** (Chạy thực nghiệm Kaggle GPU, Đo đạc Latency & Đối chuẩn v8 vs 11)
+  4. **Lê Huy Hoàng** (Phát triển giao diện Gradio Web UI & Tích hợp xử lý ảnh PIL/OpenCV)
+  5. **Đinh Hoàng Sơn** (Kiểm thử, Đánh giá các trường hợp lỗi & Hoàn thiện tài liệu kỹ thuật)
+
+---
+
+## 📄 Bản Quyền (License)
+
+Mã nguồn được phân phối công khai theo giấy phép [Apache License 2.0](LICENSE). Dữ liệu Manga109-s thuộc bản quyền của Phòng thí nghiệm Aizawa (Đại học Tokyo) cho mục đích nghiên cứu học thuật.
